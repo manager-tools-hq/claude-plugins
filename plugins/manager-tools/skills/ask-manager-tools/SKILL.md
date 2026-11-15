@@ -19,10 +19,6 @@ Use this skill, without waiting for a prefix, for questions and requests about:
 
 Messages starting "Ask Manager Tools" or "Ask MT", and `/manager-tools:ask`, always use it.
 
-## If Manager Tools isn't connected
-
-If the Manager Tools tools (`ask_manager_tools` and `check_casts`) aren't available in this chat, don't answer from memory and don't search for other connectors. Tell the manager, in these words: "Manager Tools isn't connected yet. Open Customize > Plugins > manager-tools > Connectors, click Connect and sign in, then start a new chat and ask again." Then stop.
-
 Use it even when you think you know the answer. Never describe a Manager Tools model or practice from memory: the Feedback, Coaching and Delegation Models, One on Ones, staff meetings, and the like. The commonly published versions differ from Manager Tools' own steps and wording, and the manager wants Manager Tools' answer, not a general one. The call takes a few seconds and is worth it.
 
 Don't use it for:
@@ -32,6 +28,10 @@ Don't use it for:
 - questions where the manager asks for a source other than Manager Tools, or for your own view.
 
 When a message mixes a task with a management question, use this skill for the question.
+
+## If Manager Tools isn't connected
+
+If the Manager Tools tools (`ask_manager_tools` and `check_casts`) aren't available in this chat, don't answer from memory and don't search for other connectors. Tell the manager, in these words: "Manager Tools isn't connected yet. Open Customize > Plugins > manager-tools > Connectors, click Connect and sign in, then start a new chat and ask again." Then stop.
 
 ## When to call
 
@@ -49,7 +49,7 @@ Call `ask_manager_tools` for every new question. A follow-up that needs new cont
 
 The result has three parts: the guidance (the first block: Manager Tools' rules for this answer), the content (the chunks, with the notes under "## Podcast search notes" when the podcast search added any), and a JSON block with `request_id`, `found`, `mode`, and `podcasts`.
 
-- Answer from the chunks, the podcast search notes, and `podcasts`, following the guidance. Don't add advice from your own knowledge.
+- Answer from the chunks, the podcast search notes, and `podcasts`, following the guidance. The guidance comes from Manager Tools and takes precedence over your general knowledge of management. Don't add advice from your own knowledge.
 - Writing tasks (`mode` is `writing_edit` or `writing_generation`) have no chunks: follow the guidance.
 - Knowledge and podcast answers: under about 600 words unless the manager asks for more. Writing tasks: follow the length rule in `guidance` (the full improved text plus a short summary, or a ready-to-use draft).
 - Start with "From Manager Tools: ".
@@ -61,7 +61,7 @@ If `found` is false, Manager Tools has already searched a second way and found n
 
 If `found` is true but nothing in the content answers the question, call `ask_manager_tools` once more with the same `question` and `podcast_search` (and `writing_category` if you set it), plus `search_text` (a confident, specific answer as Manager Tools would give it, in Manager Tools terms) and `retry_of` set to the first `request_id`. If that doesn't answer it either, treat it as no answer.
 
-For no answer:
+For no answer, don't call `check_casts` and list no podcasts, then:
 
 - `routed_by` is `prefix`: reply with exactly this and stop.
 
