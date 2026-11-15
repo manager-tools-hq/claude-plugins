@@ -1,0 +1,9 @@
+{
+  "name": "manager-tools",
+  "version": "0.3.0",
+  "description": "Ask Manager Tools management questions and roll out weekly One on Ones with your directs, following Manager Tools guidance.",
+  "author": { "name": "Manager Tools", "url": "https://www.manager-tools.com" },
+  "homepage": "https://www.manager-tools.com",
+  "repository": "https://github.com/manager-tools-hq/claude-plugins",
+  "privacyPolicyUrl": "https://www.manager-tools.com/privacy-policy"
+}
