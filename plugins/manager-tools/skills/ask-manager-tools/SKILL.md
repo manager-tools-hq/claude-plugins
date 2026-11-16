@@ -23,7 +23,6 @@ Use it even when you think you know the answer. Never describe a Manager Tools m
 
 Don't use it for:
 
-- rolling out One on Ones with the manager's own team: that's the one-on-one-rollout skill. A question about how One on Ones work is a question for this skill.
 - tasks that aren't about these skills, even at work: code, spreadsheets, general facts, writing that isn't professional communication.
 - questions where the manager asks for a source other than Manager Tools, or for your own view.
 

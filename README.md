@@ -4,7 +4,7 @@ Official [Manager Tools](https://www.manager-tools.com) plugins for Claude: clau
 
 | Plugin | What it does |
 |---|---|
-| [manager-tools](plugins/manager-tools) | Ask Manager Tools management questions, and roll out weekly One on Ones with your directs |
+| [manager-tools](plugins/manager-tools) | Ask Manager Tools management and career questions |
 
 ## Add this marketplace
 
