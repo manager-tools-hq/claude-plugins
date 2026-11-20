@@ -7,7 +7,7 @@ export const ASK_PREFIX = /^\s*(?:ask[\s_]+(?:manager tools|mt)\b|\/(?:manager-t
 export function noteFor(input: { prompt?: string; session_id?: string }, newId: () => string): string | null {
   if (!ASK_PREFIX.test(input.prompt ?? '')) return null;
   const ids = input.session_id ? `session_id "${input.session_id}" and turn_id "${newId()}"` : `turn_id "${newId()}"`;
-  return `This is a Manager Tools question. Use the ask-manager-tools skill: call ask_manager_tools, then check_casts before writing the answer. Pass ${ids} to both tools.`;
+  return `This is a Manager Tools question. Use the ask-manager-tools skill: call ask_manager_tools and pass it ${ids}.`;
 }
 
 function main() {

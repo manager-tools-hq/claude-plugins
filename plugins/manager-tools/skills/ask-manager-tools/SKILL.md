@@ -1,11 +1,11 @@
 ---
 name: ask-manager-tools
-description: Use for any question about management, leadership, executive or professional skills, even when you think you know the answer, including career skills (directs, feedback, coaching, delegation, hiring, meetings, communication, bosses and peers, job search, resumes, job interviews), and always when the message starts with "Ask Manager Tools" or "Ask MT", or they run /manager-tools:ask. Answers from Manager Tools content using the ask_manager_tools and check_casts tools.
+description: Use for any question about management, leadership, executive or professional skills, even when you think you know the answer, including career skills (directs, feedback, coaching, delegation, hiring, meetings, communication, bosses and peers, job search, resumes, job interviews), and always when the message starts with "Ask Manager Tools" or "Ask MT", or they run /manager-tools:ask. Answers from Manager Tools content using the ask_manager_tools tool.
 ---
 
 # Ask Manager Tools
 
-Answer the manager's question from Manager Tools content. `ask_manager_tools` returns the content and the rules for using it. `check_casts` checks the podcasts you will name, and any feedback Step 4 request, before you write the answer.
+Answer the manager's question from Manager Tools content. `ask_manager_tools` returns the content and the rules for using it.
 
 ## When to use it
 
@@ -30,7 +30,7 @@ When a message mixes a task with a management question, use this skill for the q
 
 ## If Manager Tools isn't connected
 
-If the Manager Tools tools (`ask_manager_tools` and `check_casts`) aren't available in this chat, don't answer from memory and don't search for other connectors. Tell the manager, in these words: "Manager Tools isn't connected yet. Open Customize > Plugins > manager-tools > Connectors, click Connect and sign in, then start a new chat and ask again." Then stop.
+If the Manager Tools tool `ask_manager_tools` isn't available in this chat, don't answer from memory and don't search for other connectors. Tell the manager, in these words: "Manager Tools isn't connected yet. Open Customize > Plugins > manager-tools > Connectors, click Connect and sign in, then start a new chat and ask again." Then stop.
 
 ## When to call
 
@@ -56,11 +56,11 @@ The result has three parts: the guidance (the first block: Manager Tools' rules 
 
 ## No answer
 
-If `found` is false, Manager Tools has already searched a second way and found nothing. Don't call `ask_manager_tools` again, don't call `check_casts`, and list no podcasts.
+If `found` is false, Manager Tools has already searched a second way and found nothing. Don't call `ask_manager_tools` again, and list no podcasts.
 
 If `found` is true but nothing in the content answers the question, call `ask_manager_tools` once more with the same `question` and `podcast_search` (and `writing_category` if you set it), plus `search_text` (a confident, specific answer as Manager Tools would give it, in Manager Tools terms) and `retry_of` set to the first `request_id`. If that doesn't answer it either, treat it as no answer.
 
-For no answer, don't call `check_casts` and list no podcasts, then:
+For no answer, list no podcasts, then:
 
 - `routed_by` is `prefix`: reply with exactly this and stop.
 
@@ -68,26 +68,12 @@ For no answer, don't call `check_casts` and list no podcasts, then:
 
 - `routed_by` is `auto`: say in one sentence that Manager Tools doesn't have guidance on this, then answer from your own knowledge. Don't start with "From Manager Tools: ".
 
-## Check before writing
+## Writing the answer
 
-Once you know what the answer will say, and before writing any of it, call `check_casts` with:
-
-- `casts`: every podcast you will name or link anywhere in the answer, in the list or in passing, each with the `title` and `url` you would write. List each part of a series separately (Part 1 and Part 2 are two casts).
-- `feedback_request`: when the answer includes a feedback script or an example Step 4 request (Encourage Different Future Behavior), that request word for word. Otherwise leave it out.
-- `question`, `context_request_ids` (every `request_id` you used), and the ids.
-
-Then write the answer once:
-
-- Name only casts whose `status` is `verified`, with the returned `title` and `url`. Never name a `dropped` one, anywhere.
-- If `no_confirmed_cast` is true, write `no_confirmed_cast_note` where the podcast list would go.
-- Use `feedback_request.text` as the Step 4 request, word for word.
-
-Skip `check_casts` when the answer names no podcast and has no Step 4 request.
-
-If `check_casts` returns any error, input or internal, write the answer without naming any podcast, use "Can you do that differently next time?" as any Step 4 request, and say the Manager Tools check couldn't run. Don't call it again.
+Write the answer once, following the rules `ask_manager_tools` returned. Name only podcasts from its results, with their exact titles and URLs, and for a feedback Step 4 use one of the requests those rules list, word for word.
 
 ## Errors
 
-If `ask_manager_tools` says "Manager Tools had an internal error. This is not a problem with your input; tell the manager and do not retry.", tell the manager that and stop. Don't retry and don't answer from memory. If `check_casts` says it, follow Check before writing above.
+If `ask_manager_tools` says "Manager Tools had an internal error. This is not a problem with your input; tell the manager and do not retry.", tell the manager that and stop. Don't retry and don't answer from memory.
 
-If `ask_manager_tools` returns any other error, it is an input problem: fix the input and call again. A `check_casts` error always follows Check before writing above.
+If `ask_manager_tools` returns any other error, it is an input problem: fix the input and call again.
