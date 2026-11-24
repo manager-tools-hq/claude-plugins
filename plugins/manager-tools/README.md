@@ -30,7 +30,7 @@ Then run `/mcp`, select `manager-tools` and sign in.
 
 ## What it sends and where
 
-The plugin connects Claude to the Manager Tools server at `manager-tools-mcp-19f07a84b58b.herokuapp.com`. Claude sends it your question, as Claude rewrites it to stand alone, and, so Manager Tools can check them, the podcast titles and links in its answer and the Step 4 request of any feedback script in it. The [Manager Tools privacy policy](https://www.manager-tools.com/privacy-policy) explains how Manager Tools handles what it receives.
+The plugin connects Claude to the Manager Tools server at `manager-tools-mcp-19f07a84b58b.herokuapp.com`. Claude sends it your question, as Claude rewrites it to stand alone. If you ask Claude to improve something you wrote, the question includes that text. If the first search doesn't answer the question, Claude searches once more with a short sample answer it writes. The [Manager Tools privacy policy](https://www.manager-tools.com/privacy-policy) explains how Manager Tools handles what it receives.
 
 In Claude Code, the plugin also runs a small hook on each message you send. It checks whether the message starts with "Ask MT" and, if so, tells Claude to use Manager Tools. It sends nothing anywhere.
 
