@@ -1,5 +1,5 @@
 {
   "mcpServers": {
-    "manager-tools": { "type": "http", "url": "https://manager-tools-mcp-19f07a84b58b.herokuapp.com/mcp" }
+    "manager-tools": { "type": "http", "url": "https://mcp.manager-tools.com/mcp" }
   }
 }
